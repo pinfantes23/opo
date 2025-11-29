@@ -16,6 +16,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      -webkit-text-size-adjust: 100%; /* evita zoom automático en iOS */
     }
 
     /* ======== PANTALLA PRINCIPAL ======== */
@@ -67,6 +68,7 @@
       cursor: pointer;
       color: #f0f0f0;
       transition: 0.2s;
+      touch-action: manipulation; /* evita zoom por tap */
     }
 
     #volver:hover {
@@ -107,15 +109,16 @@
     }
 
     #contador-area button {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
       border: none;
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
       background-color: #666;
       color: #f0f0f0;
       transition: 0.2s;
+      touch-action: manipulation; /* 🔥 evita zoom por doble tap */
     }
 
     #contador-area button:hover {
@@ -123,7 +126,7 @@
     }
 
     #contador-valor {
-      font-size: 20px;
+      font-size: 22px;
       width: 40px;
       text-align: center;
       color: #f0f0f0;
@@ -146,6 +149,7 @@
       font-size: 15px;
       font-weight: bold;
       transition: 0.2s;
+      touch-action: manipulation; /* también evita zoom accidental */
     }
 
     .color-boton:hover {
@@ -316,16 +320,6 @@
       pantallaColor.style.display = "none";
       pantallaPrincipal.style.display = "grid";
     });
-
-    // --- Prevención de zoom táctil accidental en móviles ---
-    document.addEventListener('gesturestart', e => e.preventDefault());
-    document.addEventListener('dblclick', e => e.preventDefault());
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', e => {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) e.preventDefault();
-      lastTouchEnd = now;
-    }, false);
   </script>
 </body>
 </html>
