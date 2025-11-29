@@ -74,6 +74,14 @@
       transform: scale(1.1);
     }
 
+    #titulo-tema {
+      margin-top: 60px;
+      font-size: 20px;
+      text-align: center;
+      max-width: 90%;
+      line-height: 1.3em;
+    }
+
     #bola-seleccionada {
       width: 100px;
       height: 100px;
@@ -85,7 +93,7 @@
       color: #f0f0f0;
       font-size: 24px;
       font-weight: bold;
-      margin-top: 60px;
+      margin-top: 20px;
       margin-bottom: 20px;
       transition: 0.3s;
     }
@@ -160,6 +168,7 @@
   <!-- Pantalla detalle -->
   <div id="pantalla-color">
     <button id="volver">←</button>
+    <h2 id="titulo-tema"></h2>
     <div id="bola-seleccionada"></div>
 
     <div id="contador-area">
@@ -186,9 +195,59 @@
     const contadorValor = document.getElementById("contador-valor");
     const masBtn = document.getElementById("mas");
     const menosBtn = document.getElementById("menos");
+    const tituloTema = document.getElementById("titulo-tema");
 
     let bolaActiva = null;
     let contador = 0;
+
+    // Lista de títulos
+    const titulosTemas = {
+      1: "TEMA 01. EL DERECHO",
+      2: "TEMA 02. CONSTITUCIÓN I",
+      3: "TEMA 03. CONSTITUCIÓN II",
+      4: "TEMA 04. UNIÓN EUROPEA",
+      5: "TEMA 05. ADMINISTRACIÓN GENERAL DEL ESTADO",
+      6: "TEMA 06. LOS FUNCIONARIOS PÚBLICOS",
+      7: "TEMA 07. MINISTERIO DEL INTERIOR",
+      8: "TEMA 08. DIRECCIÓN GENERAL POLICÍA",
+      9: "TEMA 09. LEY ORGÁNICA 2/1986 DE FUERZAS Y CUERPOS DE SEGURIDAD",
+      10: "TEMA 10. EXTRANJERÍA I",
+      11: "TEMA 11. EXTRANJERÍA II",
+      12: "TEMA 12. PROTECCIÓN INTERNACIONAL",
+      13: "TEMA 13. SEGURIDAD PRIVADA",
+      14: "TEMA 14. SEGURIDAD CIUDADANA",
+      15: "TEMA 15. INFRAESTRUCTURAS CRÍTICAS",
+      16: "TEMA 16. DERECHO PENAL GENERAL",
+      17: "TEMA 17. HOMICIDIO Y SUS FORMAS",
+      18: "TEMA 18. DELITOS CONTRA PATRIMONIO",
+      19: "TEMA 19. DELITOS CONTRA EL ORDEN PÚBLICO",
+      20: "TEMA 20. DELITOS INFORMÁTICOS",
+      21: "TEMA 21. DERECHO PROCESAL PENAL",
+      22: "TEMA 22. ESTATUTO DE LA VÍCTIMA DEL DELITO",
+      23: "TEMA 23. VIOLENCIA DE GÉNERO",
+      24: "TEMA 24. INTRODUCCIÓN PREVENCIÓN DE RIESGOS LABORALES",
+      25: "TEMA 25. PREVENCIÓN DE RIESGOS LABORALES",
+      26: "TEMA 26. PROTECCIÓN DE DATOS",
+      27: "TEMA 27. DERECHOS HUMANOS",
+      28: "TEMA 28. GLOBALIZACIÓN",
+      29: "TEMA 29. ACTITUDES",
+      30: "TEMA 30. PRINCIPIOS ÉTICOS",
+      31: "TEMA 31. MIGRACIONES",
+      32: "TEMA 32. LA CIUDAD",
+      33: "TEMA 33. LA SEGURIDAD",
+      34: "TEMA 34. DROGAS",
+      35: "TEMA 35. DESARROLLO SOSTENIBLE",
+      36: "TEMA 36. GRAMÁTICA",
+      37: "TEMA 37. ORTOGRAFÍA",
+      38: "TEMA 38. SISTEMAS OPERATIVOS",
+      39: "TEMA 39. REDES INFORMÁTICAS",
+      40: "TEMA 40. INTELIGENCIA",
+      41: "TEMA 41. CIBERDELINCUENCIA",
+      42: "TEMA 42. ARMAS DE FUEGO",
+      43: "TEMA 43. VEHÍCULO PRIORITARIO",
+      44: "TEMA 44. SEGURIDAD CONDUCCIÓN",
+      45: "TEMA 45. PREVENCIÓN DE RIESGOS LABORALES EN LA SEGURIDAD VIAL"
+    };
 
     // Recuperar progreso del localStorage
     let progreso = JSON.parse(localStorage.getItem("progresoBolas")) || {};
@@ -211,7 +270,7 @@
         contadorValor.textContent = contador;
         bolaSeleccionada.textContent = i;
         bolaSeleccionada.style.backgroundColor = bola.style.backgroundColor || "#444";
-
+        tituloTema.textContent = titulosTemas[i] || `TEMA ${String(i).padStart(2, "0")}`;
         pantallaPrincipal.style.display = "none";
         pantallaColor.style.display = "flex";
       });
@@ -259,6 +318,6 @@
     });
   </script>
 </body>
-
 </html>
+
 
